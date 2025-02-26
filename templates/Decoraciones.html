@@ -1,1 +1,17 @@
-
+<!-- cambiar la consistencia  -->
+<table class="table table-sm">
+    <thead class="table-active">
+        <tr>
+            <th>Id</th>
+            <th>Nombre del material</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- ng-repeat, solo cambiar el nombre  -->
+        <tr ng-repeat="x in decoraciones">
+            <td scope="col">{{ x.idDecoracion }}</td>
+            <td scope="col">{{ x.nombreMaterial }}</td>
+            <td scope="col"></td>
+        </tr>
+    </tbody>
