@@ -1,1 +1,21 @@
+<table class="table table-sm">
+    <thead class="table-active">
+        <tr>
+            <th>Id</th>
+            <th>Clave</th>
+            <th>Decoracion</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="x in paquetes">
+            <td scope="col">{{ x.idPaquete  }}</td>
+            <td scope="col">{{ x.Clave }}</td>
+            <td scope="col">{{ x.Decoracion	  }}</td>
+            <td scope="col">{{ x.Cantidad }}</td>
+            <td scope="col">{{ x.Precio }}</td>
+        </tr>
+    </tbody>
+</table>
 
