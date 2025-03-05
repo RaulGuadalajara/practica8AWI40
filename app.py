@@ -136,14 +136,14 @@ def guardarDecoracion():
         WHERE idDecoracion = %s
         """
         val = (material, id)
-else:
-    sql = """
-    INSERT INTO decoraciones (nombreMaterial)
-    VALUES (%s)
-    """
-    val = (material,)
-
+    else:
+        sql = """
+        INSERT INTO decoraciones (nombreMaterial)
+        VALUES (%s)
+        """
+        val = (material,)
     
+        
     cursor.execute(sql, val)
     con.commit()
     con.close()
