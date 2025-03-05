@@ -19,11 +19,11 @@ app.config(function ($routeProvider, $locationProvider) {
         templateUrl: "/app",
         controller: "appCtrl"
     })
-    .when("/Decoraciones", {
+    .when("/decoraciones", {
         templateUrl: "/Decorciones",
         controller: "decoracionesCtrl"
     })
-    .when("/Paquetes", {
+    .when("/paquetes", {
         templateUrl: "/Paquetes",
         controller: "paquetesCtrl"
     })
