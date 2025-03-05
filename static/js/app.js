@@ -79,7 +79,7 @@ app.controller("decoracionesCtrl", function ($scope, $http) {
     
 })
 app.controller("paquetesCtrl", function ($scope, $http) {
-        alert("Hola, soy el controlador decoraciones")
+        alert("Hola, soy el controlador paquetes")
 
 })
 
