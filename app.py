@@ -46,7 +46,7 @@ def app2():
     return "<h5>practica 8. Raul Omar Guadalajara Sanchez</h5>"
 
 @app.route("/decoraciones")
-def productos():
+def decoraciones():
     if not con.is_connected():
         con.reconnect()
 
@@ -91,7 +91,7 @@ def buscarDecoraciones():
 
     LIMIT 10 OFFSET 0
     """
-    val    = (busqueda, busqueda, busqueda)
+    val = (busqueda,)
 
     try:
         cursor.execute(sql, val)
@@ -123,27 +123,26 @@ def guardarDecoracion():
     if not con.is_connected():
         con.reconnect()
 
-    id          = request.form["idDecoracion "]
+    id            = request.form["idDecoracion"]
     material      = request.form["nombreMaterial"]
     # fechahora   = datetime.datetime.now(pytz.timezone("America/Matamoros"))
     
     cursor = con.cursor()
 
     if id:
-        sql = """
-        UPDATE decoraciones
+    sql = """
+    UPDATE decoraciones
+    SET nombreMaterial = %s
+    WHERE idDecoracion = %s
+    """
+    val = (material, id)
+else:
+    sql = """
+    INSERT INTO decoraciones (nombreMaterial)
+    VALUES (%s)
+    """
+    val = (material,)
 
-        SET nombreMaterial    = %s,
-
-        WHERE idDecoracion = %s
-        """
-        val = (material)
-    else:
-        sql = """
-        INSERT INTO decoraciones (idDecoracion, nombreMaterial)
-                    VALUES    (%s,          %s,      %s)
-        """
-        val =                 (material)
     
     cursor.execute(sql, val)
     con.commit()
@@ -177,7 +176,7 @@ def eliminarDecoracion():
     if not con.is_connected():
         con.reconnect()
 
-    id = request.form["idDecoracion "]
+    id = request.form["idDecoracion"]
 
     cursor = con.cursor(dictionary=True)
     sql    = """
