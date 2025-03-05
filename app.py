@@ -45,7 +45,7 @@ def app2():
 
     return "<h5>practica 8. Raul Omar Guadalajara Sanchez</h5>"
 
-@app.route("/Decoraciones")
+@app.route("/decoraciones")
 def productos():
     if not con.is_connected():
         con.reconnect()
@@ -72,8 +72,8 @@ def productos():
 
     return render_template("Decoraciones.html", decoraciones=registros)
 
-@app.route("/Decoraciones/buscar", methods=["GET"])
-def buscarProductos():
+@app.route("/decoraciones/buscar", methods=["GET"])
+def buscarDecoraciones():
     if not con.is_connected():
         con.reconnect()
 
@@ -116,10 +116,10 @@ def buscarProductos():
 
     return make_response(jsonify(registros))
 
-@app.route("/Decoracion", methods=["POST"])
+@app.route("/decoracion", methods=["POST"])
 # Usar cuando solo se quiera usar CORS en rutas específicas
 # @cross_origin()
-def guardarProducto():
+def guardarDecoracion():
     if not con.is_connected():
         con.reconnect()
 
@@ -133,8 +133,7 @@ def guardarProducto():
         sql = """
         UPDATE decoraciones
 
-        SET idDecoracion      = %s,
-            nombreMaterial    = %s,
+        SET nombreMaterial    = %s,
 
         WHERE idDecoracion = %s
         """
@@ -152,14 +151,14 @@ def guardarProducto():
 
     return make_response(jsonify({}))
 
-@app.route("/Decoraciones/<int:id>")
+@app.route("/decoraciones/<int:id>")
 def editarProducto(id):
     if not con.is_connected():
         con.reconnect()
 
     cursor = con.cursor(dictionary=True)
     sql    = """
-    SELECT idDecoracion , nombreMaterial
+    SELECT idDecoracion, nombreMaterial
 
     FROM decoraciones
 
@@ -173,8 +172,8 @@ def editarProducto(id):
 
     return make_response(jsonify(registros))
 
-@app.route("/Decoracion/eliminar", methods=["POST"])
-def eliminarProducto():
+@app.route("/decoracion/eliminar", methods=["POST"])
+def eliminarDecoracion():
     if not con.is_connected():
         con.reconnect()
 
