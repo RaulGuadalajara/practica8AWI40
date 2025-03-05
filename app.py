@@ -130,12 +130,12 @@ def guardarDecoracion():
     cursor = con.cursor()
 
     if id:
-    sql = """
-    UPDATE decoraciones
-    SET nombreMaterial = %s
-    WHERE idDecoracion = %s
-    """
-    val = (material, id)
+        sql = """
+        UPDATE decoraciones
+        SET nombreMaterial = %s
+        WHERE idDecoracion = %s
+        """
+        val = (material, id)
 else:
     sql = """
     INSERT INTO decoraciones (nombreMaterial)
